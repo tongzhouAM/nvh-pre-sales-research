@@ -1,0 +1,436 @@
+<!-- 【公司名称】 NVH 售前调研报告 HTML 模板 v2.0 | corporate-clean | 2026-07 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>【公司名称】 · {客户简称}{产品简称} · NVH售前调研报告</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+SC:wght@200;300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ===== TOKENS ===== */
+:root{
+  --bg:#ffffff;--bg-soft:#f5f7fa;--surface:#ffffff;--surface-2:#f0f3f7;
+  --border:rgba(10,37,64,.10);--border-strong:rgba(10,37,64,.18);
+  --text-1:#0a2540;--text-2:#425466;--text-3:#8898aa;
+  --accent:#0a2540;--accent-2:#1d4ed8;--accent-3:#64748b;
+  --good:#0e9f6e;--warn:#d97706;--bad:#dc2626;
+  --critical:#dc2626;--alert:#d97706;
+  --grad:linear-gradient(135deg,#0a2540,#1d4ed8);
+  --grad-soft:linear-gradient(135deg,#f0f4fb,#e4ecf7);
+  --radius:8px;--radius-lg:14px;--radius-sm:5px;
+  --shadow:0 1px 3px rgba(10,37,64,.06),0 4px 12px rgba(10,37,64,.04);
+  --shadow-lg:0 6px 20px rgba(10,37,64,.08),0 20px 50px rgba(10,37,64,.06);
+  --font-sans:'Inter','Noto Sans SC',sans-serif;
+  --ease:cubic-bezier(.4,0,.2,1);
+  --content-width:1100px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-sans);background:var(--bg);color:var(--text-1);line-height:1.65;font-size:14px;-webkit-font-smoothing:antialiased;letter-spacing:-.01em}
+
+/* ===== HEADER ===== */
+.page-header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:14px 0;font-size:13px;font-weight:600;color:var(--text-2);letter-spacing:.04em}
+.page-header .inner{max-width:var(--content-width);margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between}
+.header-brand{display:flex;align-items:center;gap:10px;color:var(--text-1);font-weight:700;font-size:13px}
+.header-logo{width:32px;height:32px;border-radius:7px;object-fit:contain;background:rgba(255,255,255,.94);padding:4px;flex-shrink:0}
+.header-brand-text{white-space:nowrap}
+.page-header nav{display:flex;gap:22px}
+.page-header nav a{color:var(--text-3);text-decoration:none;font-weight:500;font-size:12px;transition:color .2s}
+.page-header nav a:hover{color:var(--accent-2)}
+
+/* ===== HERO ===== */
+.hero{position:relative;overflow:hidden;background:var(--grad-soft);padding:100px 0 80px}
+.hero::before{content:"";position:absolute;right:-180px;top:-140px;width:600px;height:600px;border-radius:50%;background:var(--grad);filter:blur(12px);opacity:.20}
+.hero::after{content:"";position:absolute;left:-120px;bottom:-180px;width:480px;height:480px;border-radius:50%;background:linear-gradient(135deg,#1d4ed8,#64748b);filter:blur(10px);opacity:.10}
+.hero-inner{max-width:var(--content-width);margin:0 auto;padding:0 40px;position:relative;z-index:1}
+.hero-kicker{font-size:12px;font-weight:700;color:var(--accent-2);letter-spacing:.12em;text-transform:uppercase;margin-bottom:12px}
+.hero h1{font-size:54px;line-height:1.1;font-weight:800;letter-spacing:-.03em;margin:0 0 16px;color:var(--text-1)}
+.hero h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero-desc{font-size:17px;line-height:1.65;color:var(--text-2);max-width:56ch;margin-bottom:40px}
+.hero-stats{display:flex;gap:36px;flex-wrap:wrap}
+.hero-stat .val{font-size:32px;font-weight:900;letter-spacing:-.04em;color:var(--accent);line-height:1.1}
+.hero-stat .lbl{font-size:12px;color:var(--text-3);margin-top:4px}
+.hero-meta{font-size:11px;color:var(--text-3);margin-top:40px;padding-top:18px;border-top:1px solid var(--border)}
+
+/* ===== SECTION ===== */
+.section{padding:72px 0}
+.section-alt{background:var(--bg-soft)}
+.section-inner{max-width:var(--content-width);margin:0 auto;padding:0 40px}
+.section-kicker{font-size:11px;font-weight:700;color:var(--accent-2);letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px}
+.section-h2{font-size:36px;line-height:1.18;font-weight:700;letter-spacing:-.025em;margin:0 0 10px}
+.section-sub{font-size:16px;line-height:1.65;color:var(--text-2);max-width:60ch;margin-bottom:36px}
+
+/* ===== LAYOUT ===== */
+.row{display:flex;gap:24px;align-items:center}
+.row-start{display:flex;gap:24px;align-items:flex-start}
+.row-wrap{display:flex;gap:24px;flex-wrap:wrap}
+.grid{display:grid;gap:18px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+.fill{flex:1}
+.mt-s{margin-top:8px}.mt-m{margin-top:16px}.mt-l{margin-top:28px}.mt-xl{margin-top:48px}
+.mb-s{margin-bottom:8px}.mb-m{margin-bottom:16px}.mb-l{margin-bottom:28px}
+.tc{text-align:center}
+.dim{color:var(--text-2)}.dim2{color:var(--text-3)}
+
+/* ===== CARDS ===== */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px 28px;box-shadow:var(--shadow);margin-bottom:14px}
+.card-soft{background:var(--surface-2);border:1px solid var(--border)}
+.card-accent{border-left:3px solid var(--accent-2)}
+.card-good{border-left:3px solid var(--good)}
+.card-warn{border-left:3px solid var(--warn)}
+.card-bad{border-left:3px solid var(--bad)}
+.card-label{font-size:10px;font-weight:700;letter-spacing:.12em;color:var(--accent-2);text-transform:uppercase;margin-bottom:14px}
+
+/* ===== KPI & SIGNAL ===== */
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:14px}
+.kpi{background:var(--surface-2);border-radius:var(--radius-sm);padding:18px 16px;text-align:center}
+.kpi .kpi-num{font-size:28px;font-weight:800;letter-spacing:-.03em;line-height:1;color:var(--accent-2)}
+.kpi .kpi-num.c{color:var(--critical)}.kpi .kpi-num.g{color:var(--good)}
+.kpi .kpi-lbl{font-size:10px;color:var(--text-3);margin-top:5px;letter-spacing:.06em}
+
+.sig-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}
+.sig{background:var(--surface-2);border-radius:var(--radius-sm);padding:14px 16px;position:relative}
+.sig::before{content:'';position:absolute;left:0;top:6px;bottom:6px;width:3px;background:var(--accent-2);border-radius:0 2px 2px 0}
+.sig .sig-tag{font-size:9px;font-weight:700;letter-spacing:.08em;color:var(--accent-2);margin-bottom:4px;text-transform:uppercase}
+.sig .sig-val{font-size:12px;color:var(--text-2);line-height:1.55}
+
+/* ===== DM (Decision Makers) ===== */
+.dm-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:14px}
+.dm{background:var(--surface-2);border-radius:var(--radius-sm);padding:16px 18px 14px;border-top:3px solid var(--accent-2)}
+.dm .dm-role{font-size:9px;font-weight:700;letter-spacing:.08em;color:var(--accent-2);margin-bottom:5px;text-transform:uppercase}
+.dm .dm-title{font-size:13px;font-weight:600;margin-bottom:3px;color:var(--text-1)}
+.dm .dm-focus{font-size:11px;color:var(--text-3);line-height:1.5}
+
+/* ===== TABLES ===== */
+.tbl-wrap{overflow-x:auto;margin:4px 0}
+table{width:100%;border-collapse:collapse;font-size:12px}
+thead th{font-size:9px;font-weight:700;letter-spacing:.06em;text-align:left;padding:8px 12px;color:var(--text-3);text-transform:uppercase;border-bottom:2px solid var(--border-strong);background:var(--surface-2)}
+tbody td{padding:8px 12px;border-bottom:1px solid var(--border);color:var(--text-2);line-height:1.6}
+.data-table{font-size:14px}
+.data-table th{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-2)}
+.data-table td{border-bottom:1px solid var(--border);padding:10px 14px}
+.data-table tr:last-child td{border-bottom:none}
+.data-table .highlight td{background:var(--grad-soft)}
+
+/* ===== PILLS ===== */
+.pill{display:inline-block;padding:3px 10px;font-size:10px;font-weight:600;letter-spacing:.04em;border-radius:3px;white-space:nowrap}
+.pill-blue{color:var(--accent-2);background:color-mix(in srgb,var(--accent-2) 10%,transparent);border:1px solid color-mix(in srgb,var(--accent-2) 22%,transparent)}
+.pill-red{color:var(--critical);background:color-mix(in srgb,var(--critical) 8%,transparent);border:1px solid color-mix(in srgb,var(--critical) 20%,transparent)}
+.pill-amber{color:var(--alert);background:color-mix(in srgb,var(--alert) 8%,transparent);border:1px solid color-mix(in srgb,var(--alert) 20%,transparent)}
+.pill-green{color:var(--good);background:color-mix(in srgb,var(--good) 8%,transparent);border:1px solid color-mix(in srgb,var(--good) 20%,transparent)}
+.pill-p0{color:var(--critical);background:color-mix(in srgb,var(--critical) 8%,transparent);border:1px solid color-mix(in srgb,var(--critical) 22%,transparent);font-size:10px;padding:3px 12px}
+.pill-p1{color:var(--alert);background:color-mix(in srgb,var(--alert) 8%,transparent);border:1px solid color-mix(in srgb,var(--alert) 22%,transparent);font-size:10px;padding:3px 12px}
+.pill-p2{color:var(--text-3);background:var(--surface-2);border:1px solid var(--border);font-size:10px;padding:3px 12px}
+
+/* ===== NOISE CARD .nc ===== */
+.nc{margin-bottom:14px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+.nc.p0{border-left:4px solid var(--critical)}
+.nc.p1{border-left:4px solid var(--alert)}
+.nc.p2{border-left:4px solid var(--text-3)}
+.nc-head{padding:14px 22px;background:var(--surface-2);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.nc-head h3{font-size:15px;font-weight:700}
+.nc-head .nc-meta{font-size:10px;color:var(--text-3);letter-spacing:.04em}
+.nc-body{padding:18px 22px}
+
+.dr{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:14px}
+.dr .dc{background:var(--surface-2);border-radius:var(--radius-sm);padding:15px 17px}
+.dr .dc .dl{display:inline-block;font-size:9px;font-weight:700;letter-spacing:.08em;color:var(--accent-2);margin-bottom:8px;text-transform:uppercase}
+.dr .dc{font-size:12px;color:var(--text-2);line-height:1.65}
+
+.dt thead th{text-align:center;font-size:9px;padding:7px 5px;white-space:nowrap;font-weight:700}
+.dt thead .ds{color:var(--accent-2)}.dt thead .dsl{color:var(--good)}.dt thead .dloud{color:var(--critical)}.dt thead .doct{color:var(--good)}.dt thead .dsh{color:var(--alert)}
+.dt tbody td{text-align:center;font-size:11px}
+
+.dn{margin-top:12px;padding:10px 14px;background:var(--surface-2);border-radius:var(--radius-sm);font-size:11px;color:var(--text-3);line-height:1.6}
+.dn .dn-tag{font-weight:700;color:var(--accent-2);margin-right:6px;font-size:9px;letter-spacing:.05em}
+
+/* ===== HL BOX ===== */
+.hl{padding:13px 18px;margin:8px 0;font-size:12px;line-height:1.65;color:var(--text-2);border-radius:var(--radius-sm)}
+.hl-blue{background:color-mix(in srgb,var(--accent-2) 6%,transparent);border-left:3px solid var(--accent-2)}
+.hl-green{background:color-mix(in srgb,var(--good) 6%,transparent);border-left:3px solid var(--good)}
+.hl-warn{background:color-mix(in srgb,var(--warn) 6%,transparent);border-left:3px solid var(--warn)}
+.hl-red{background:color-mix(in srgb,var(--critical) 5%,transparent);border-left:3px solid var(--critical)}
+.hl strong{color:var(--text-1);font-weight:600}
+
+/* ===== COOP ===== */
+.coop-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:12px 0}
+.coop{background:var(--surface-2);border-radius:var(--radius-sm);padding:20px 14px;text-align:center;border-top:3px solid var(--accent-2)}
+.coop:nth-child(4){border-top-color:var(--good)}
+.coop .c-num{font-size:20px;font-weight:800;color:var(--accent-2);margin-bottom:8px}
+.coop:nth-child(4) .c-num{color:var(--good)}
+.coop .c-title{font-size:13px;font-weight:600;margin-bottom:4px;color:var(--text-1)}
+.coop .c-detail{font-size:10px;color:var(--text-3);line-height:1.6}
+
+/* ===== QUOTE ===== */
+.q{background:var(--surface-2);border-left:3px solid var(--accent-2);border-radius:var(--radius-sm);padding:16px 22px;margin:10px 0;font-size:13px;color:var(--text-2);font-style:italic;line-height:1.65}
+.q .q-tag{font-size:9px;font-weight:700;letter-spacing:.08em;color:var(--accent-2);margin-bottom:6px;font-style:normal;text-transform:uppercase}
+
+/* ===== DECISION FLOW ===== */
+.flow-line{font-size:11px;color:var(--text-3);display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:8px}
+.flow-line .flow-step{color:var(--accent-2);font-weight:700}
+
+/* ===== SCROLL REVEAL ===== */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* ===== FOOTER ===== */
+.page-footer{background:var(--accent);color:rgba(255,255,255,.65);padding:44px 0;font-size:12px;text-align:center;line-height:2}
+.page-footer strong{color:#fff}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+  .hero h1{font-size:34px}.section-h2{font-size:28px}
+  .kpi-row,.sig-row,.dm-row,.coop-row,.g2,.g3{grid-template-columns:repeat(2,1fr)}
+  .dr{grid-template-columns:1fr}
+  .page-header nav{display:none}
+  .row,.row-start{flex-direction:column}
+}
+@media print{
+  .page-header{display:none!important}
+  body{background:#fff}
+  .card,.nc{box-shadow:none;border:1px solid #ccc}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="page-header">
+  <div class="inner">
+    <span class="header-brand"><img class="header-logo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48'%3E%3Crect width='48' height='48' rx='8' fill='%231d4ed8'/%3E%3Cpath d='M10 30 L16 22 L22 32 L28 18 L34 28 L38 24' stroke='white' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" alt="【公司名称】"><span class="header-brand-text">【公司名称】 · <span style="font-weight:400;color:var(--text-2);">{客户简称}{产品简称}</span> · NVH售前调研</span></span>
+    <nav>
+      <a href="#exec">摘要</a><a href="#s1">客户画像</a><a href="#s2">异音画像</a><a href="#s3">能力匹配</a><a href="#s4">客户反馈</a><a href="#s5">行动建议</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-kicker">NVH 售前调研报告 · {日期}</div>
+    <h1>{客户全称}<br><span>{产品全称}</span></h1>
+    <p class="hero-desc">{一句话核心结论 — 面向决策者，30秒读完。包含客户NVH痛点强度、切入机会、预期价值主张。}</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="val">{P0数}</div><div class="lbl">P0 级异音</div></div>
+      <div class="hero-stat"><div class="val">{覆盖}</div><div class="lbl">{标签1}</div></div>
+      <div class="hero-stat"><div class="val">{等级}</div><div class="lbl">NVH 成熟度</div></div>
+      <div class="hero-stat"><div class="val">{ROI}</div><div class="lbl">{标签2}</div></div>
+    </div>
+    <div class="hero-meta">【公司名称】 · 内部资料 · 售前专用</div>
+  </div>
+</section>
+
+<!-- ═══ 01. 客户画像 ═══ -->
+<section class="section" id="s1">
+  <div class="section-inner">
+    <div class="section-kicker">01 · Customer Profile</div>
+    <h2 class="section-h2">客户画像</h2>
+
+    <div class="card reveal">
+      <div class="card-label">公司基本面</div>
+      <div class="kpi-row">
+        <div class="kpi"><div class="kpi-num">{营收}</div><div class="kpi-lbl">{指标1}</div></div>
+        <div class="kpi"><div class="kpi-num c">{员工}</div><div class="kpi-lbl">{指标2}</div></div>
+        <div class="kpi"><div class="kpi-num g">{产能}</div><div class="kpi-lbl">{指标3}</div></div>
+        <div class="kpi"><div class="kpi-num">{规模}</div><div class="kpi-lbl">{指标4}</div></div>
+      </div>
+      <div class="sig-row">
+        <div class="sig"><span class="sig-tag">Product</span><span class="sig-val">{产品信号}</span></div>
+        <div class="sig"><span class="sig-tag">Quality</span><span class="sig-val">{质量信号}</span></div>
+        <div class="sig"><span class="sig-tag">Team</span><span class="sig-val">{团队信号}</span></div>
+        <div class="sig"><span class="sig-tag">Timing</span><span class="sig-val">{时机信号}</span></div>
+      </div>
+      <div style="font-size:12px;color:var(--text-2);"><strong style="color:var(--text-1);">{客户公司全称}</strong> — <span style="color:var(--text-3);">{一句话定位}</span></div>
+    </div>
+
+    <div class="card reveal">
+      <div class="card-label">产业链位置</div>
+      <div style="font-size:13px;line-height:1.75;color:var(--text-2);"><strong style="color:var(--text-1);">{客户简称}</strong> 处于 <span class="pill pill-p0">{Tier级别}</span>，向上游采购 {关键原材料}，向下游供应给 {客户群}。核心 NVH 压力来自 {压力来源}。</div>
+    </div>
+
+    <div class="card card-accent reveal">
+      <div class="card-label">NVH 成熟度 &amp; CQCC 对标</div>
+      <div style="font-size:13px;line-height:1.75;color:var(--text-2);margin-bottom:10px"><strong style="color:var(--text-1);">等级：{成熟度等级}</strong> — {一句话判断}</div>
+      <div class="hl hl-blue"><strong>CQCC 对标：</strong>{隔声/声品质/线性度/物理完整性 — 对照 CQCC《智能新能源汽车静谧舒适性规程》4大维度定位}</div>
+    </div>
+
+    <div class="card reveal">
+      <div class="card-label">主要产品矩阵</div>
+      <div class="tbl-wrap"><table><thead><tr><th>产品线</th><th>代表型号</th><th>年产量/销量</th><th>定位</th><th style="text-align:center">NVH 敏感度</th><th>备注</th></tr></thead><tbody></tbody></table></div>
+    </div>
+
+    <div class="card reveal">
+      <div class="card-label">决策链路</div>
+      <div class="dm-row">
+        <div class="dm"><div class="dm-role">Economic Buyer</div><div class="dm-title">{职称}</div><div class="dm-focus">{关注点}</div></div>
+        <div class="dm"><div class="dm-role">Technical Buyer</div><div class="dm-title">{职称}</div><div class="dm-focus">{关注点}</div></div>
+        <div class="dm"><div class="dm-role">End User</div><div class="dm-title">{职称}</div><div class="dm-focus">{关注点}</div></div>
+      </div>
+      <div class="flow-line"><span class="flow-step">①</span>{触发源} → <span class="flow-step">②</span>{角色A} → <span class="flow-step">③</span>{角色B} → <span class="flow-step">④</span>{角色C}</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 02. 异音需求画像 ═══ -->
+<section class="section section-alt" id="s2">
+  <div class="section-inner">
+    <div class="section-kicker">02 · Noise Profile</div>
+    <h2 class="section-h2">{产品简称} · 异音需求画像</h2>
+
+    <div class="card reveal">
+      <div class="card-label">产品基本信息</div>
+      <table class="data-table">
+        <tr><td style="width:110px;font-weight:600;color:var(--text-2);font-size:12px;text-transform:uppercase;letter-spacing:.06em">产品名称</td><td>{产品全称}</td></tr>
+        <tr><td style="font-weight:600;color:var(--text-2);font-size:12px;text-transform:uppercase;letter-spacing:.06em">产品类别</td><td>{描述}</td></tr>
+        <tr><td style="font-weight:600;color:var(--text-2);font-size:12px;text-transform:uppercase;letter-spacing:.06em">驱动类型</td><td>{描述}</td></tr>
+        <tr><td style="font-weight:600;color:var(--text-2);font-size:12px;text-transform:uppercase;letter-spacing:.06em">运行工况</td><td>{描述}</td></tr>
+        <tr><td style="font-weight:600;color:var(--text-2);font-size:12px;text-transform:uppercase;letter-spacing:.06em">安装位置</td><td>{描述}</td></tr>
+        <tr><td style="font-weight:600;color:var(--text-2);font-size:12px;text-transform:uppercase;letter-spacing:.06em">NVH 特点</td><td><strong>{核心挑战}</strong></td></tr>
+        <tr><td style="font-weight:600;color:var(--text-2);font-size:12px;text-transform:uppercase;letter-spacing:.06em">对标竞品</td><td>{列表}</td></tr>
+      </table>
+    </div>
+
+    <div class="card reveal">
+      <div class="card-label">产品线 — NVH 检测需求全景</div>
+      <div class="tbl-wrap"><table><thead><tr><th>产品线</th><th>产品类型</th><th>典型参数</th><th>NVH 核心挑战</th><th style="text-align:center">EOL 需求强度</th><th>备注</th></tr></thead><tbody></tbody></table></div>
+    </div>
+
+    <!-- ═══ 异音卡片模板 ═══ -->
+    <!--
+    <div class="nc p0 reveal"><div class="nc-head"><div><span class="pill pill-p0">P0</span><h3 style="display:inline;margin-left:10px;">#N 异音名称</h3><span style="font-size:10px;color:var(--text-3);margin-left:8px;">ENGLISH TERM</span></div><div class="nc-meta">严重度 ★★★★★ &ensp;|&ensp; ★适用产品</div></div><div class="nc-body"><div class="dr"><div class="dc"><span class="dl">Phenomenon</span>{主观听感、工况条件、"听起来像什么"}</div><div class="dc"><span class="dl">Source</span>{精确到具体零件具体位置的运动副/界面}</div><div class="dc"><span class="dl">Root Cause</span>{物理机制链条}</div></div><div class="tbl-wrap dt"><table><thead><tr><th class="ds" style="width:20%">频谱特征</th><th class="dsl" style="width:18%">声级计</th><th class="dloud" style="width:20%">响度 Sone</th><th class="doct" style="width:20%">倍频程</th><th class="dsh" style="width:22%">尖锐度 Acum</th></tr></thead><tbody><tr><td class="ds">{特征频率+公式}</td><td class="dsl">{dBA峰值 / Leq}</td><td class="dloud">{Sone典型值}</td><td class="doct">{倍频程能量分布}</td><td class="dsh">{Acum典型值}</td></tr></tbody></table></div><div class="dn"><span class="dn-tag">AUX</span>粗糙度 {Asper} | 音调度 TNR {dB} dB | 波动强度 {值} | 阶次特征 {描述} | 检测手段 {传感器 + 节点}</div></div></div>
+    -->
+
+    <div class="card reveal">
+      <div class="card-label">异音特征速查矩阵</div>
+      <div class="tbl-wrap"><table><thead><tr><th>异音类型</th><th>时域形态</th><th>频域形态</th><th>阶次特征</th><th>最关键指标</th><th>传感器</th><th>分析节点</th></tr></thead><tbody></tbody></table></div>
+    </div>
+
+    <div class="hl hl-blue"><strong>适用标准：</strong>{标准号列表}</div>
+
+    <div class="card reveal" style="margin-top:14px">
+      <div class="card-label">传感器布点方案</div>
+      <div class="hl hl-blue" style="margin-bottom:14px"><strong>策略摘要：</strong>{基于以上N种异音类型的来源定位和检测手段分析，推荐以下传感器布点方案。}</div>
+      <div class="tbl-wrap"><table><thead><tr><th>优先级</th><th>编号</th><th>贴附位置</th><th>传感器类型</th><th>方向</th><th>覆盖异音</th><th>推荐理由</th></tr></thead>
+        <tbody>
+          <tr><td><span class="pill pill-p0">P0</span></td><td>#1</td><td>{位置}</td><td>{类型}</td><td>{轴向}</td><td>{异音}</td><td>{理由}</td></tr>
+          <tr><td><span class="pill pill-p0">P0</span></td><td>#2</td><td>{位置}</td><td>{类型}</td><td>{轴向}</td><td>{异音}</td><td>{理由}</td></tr>
+          <tr><td><span class="pill pill-p1">P1</span></td><td>#3</td><td>{位置}</td><td>{类型}</td><td>{轴向}</td><td>{异音}</td><td>{理由}</td></tr>
+          <tr><td><span class="pill pill-p2">P2</span></td><td>#4</td><td>{位置}</td><td>{类型}</td><td>{轴向}</td><td>{异音}</td><td>{理由}</td></tr>
+        </tbody></table></div>
+      <div style="margin-top:10px;font-size:12px;color:var(--text-2);"><span style="font-weight:700;color:var(--accent-2);font-size:10px;letter-spacing:.06em;">通道组合策略</span>&ensp; 1ch: #1（最小可用）&ensp;|&ensp; 2ch: #1+#2（核心全覆盖）&ensp;|&ensp; 4ch: #1+#2+#3+#4（全异音+来源定位）</div>
+      <div class="hl hl-blue" style="margin-top:10px"><strong>安装要点：</strong>{3-5条产品特定工装指导}</div>
+      <div class="hl hl-green"><strong>阶段 0 验证：</strong>以上为理论最优推荐，应用便携式采集套装做多点位对比采集验证。有产品 3D 图纸可进一步做模态仿真辅助选点。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 03. 能力匹配 ═══ -->
+<section class="section" id="s3">
+  <div class="section-inner">
+    <div class="section-kicker">03 · Capability Match</div>
+    <h2 class="section-h2">分析平台/ 声学AI检测方案匹配度</h2>
+
+    <div class="card reveal">
+      <div class="card-label">异音 → 系统能力映射</div>
+      <div class="tbl-wrap"><table><thead><tr><th>异音问题</th><th>分析平台节点</th><th>声学AI检测方案能力</th><th>传感器</th><th style="text-align:center">匹配度</th></tr></thead><tbody></tbody></table></div>
+    </div>
+
+    <div class="card card-accent reveal">
+      <div class="card-label">推荐切入点</div>
+      <div class="grid g2">
+        <div><h4 style="color:var(--critical);font-size:14px;margin-bottom:8px">PRIMARY — {场景}</h4><ul style="font-size:12px;padding-left:18px;line-height:1.9;color:var(--text-2);"><li>{场景描述}</li><li>{检测项目}</li><li>{节拍/可行性}</li><li><strong style="color:var(--text-1);">{ROI}</strong></li></ul></div>
+        <div><h4 style="color:var(--alert);font-size:14px;margin-bottom:8px">SECONDARY — {场景}</h4><ul style="font-size:12px;padding-left:18px;line-height:1.9;color:var(--text-2);"><li>{用途1}</li><li>{用途2}</li><li>{用途3}</li><li>{外溢价值}</li></ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 04. 客户反馈 ═══ -->
+<section class="section section-alt" id="s4">
+  <div class="section-inner">
+    <div class="section-kicker">04 · Client Signals</div>
+    <h2 class="section-h2">客户端反馈与质量信号</h2>
+
+    <div class="card reveal">
+      <div class="card-label">内部 NVH 技术积累</div>
+      <div class="tbl-wrap"><table><thead><tr><th>来源</th><th>内容</th></tr></thead><tbody></tbody></table></div>
+    </div>
+
+    <div class="card reveal">
+      <div class="card-label">竞品 NVH 能力速览</div>
+      <div class="tbl-wrap"><table><thead><tr><th>竞品</th><th>NVH 策略</th><th>可攻击短板</th><th>对{客户简称}的启示</th></tr></thead><tbody></tbody></table></div>
+      <div class="hl hl-blue" style="margin-top:10px"><strong>{客户简称}定位判断：</strong>{在竞品NVH格局中的位置和机会窗口}</div>
+    </div>
+
+    <div class="card card-warn reveal">
+      <div class="card-label">政策与法规驱动</div>
+      <div class="hl hl-warn" style="margin-bottom:14px"><strong>⚡ 法规窗口期提醒：</strong>{2026年密集实施的关键标准 + 对客户的影响紧迫度}</div>
+      <div class="tbl-wrap"><table><thead><tr><th>法规/标准</th><th>核心要求</th><th>生效</th><th>对客户的影响</th></tr></thead><tbody></tbody></table></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 05. 行动建议 ═══ -->
+<section class="section" id="s5">
+  <div class="section-inner">
+    <div class="section-kicker">05 · Action Plan</div>
+    <h2 class="section-h2">行动建议</h2>
+
+    <div class="card reveal">
+      <div class="card-label">量化价值主张</div>
+      <div class="tbl-wrap"><table><thead><tr><th style="width:22%">技术能力</th><th style="width:30%">业务价值</th><th style="width:48%">量化依据</th></tr></thead><tbody></tbody></table></div>
+    </div>
+
+    <div class="card card-accent reveal">
+      <div class="card-label">接触策略 &amp; 话术</div>
+      <div class="q"><div class="q-tag">30-Second Pitch</div>"{电梯话术}"</div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;"><span class="pill pill-blue">Cold Outreach</span><span class="pill pill-blue">Industry Event</span><span class="pill pill-blue">Referral</span></div>
+    </div>
+
+    <div class="card reveal">
+      <div class="card-label">渐进式合作路径</div>
+      <div class="coop-row">
+        <div class="coop"><div class="c-num">01</div><div class="c-title">远程 Demo</div><div class="c-detail">{时长}，零成本<br>{场景} 自动判异<br><strong>目标：</strong>{目标}</div></div>
+        <div class="coop"><div class="c-num">02</div><div class="c-title">现场 PoC</div><div class="c-detail">{时长}，携带采集设备<br>真实样件跑 分析平台<br><strong>目标：</strong>{目标}</div></div>
+        <div class="coop"><div class="c-num">03</div><div class="c-title">单工位试用</div><div class="c-detail">{时长}，产线部署 1 套<br>累积基线证明 ROI<br><strong>目标：</strong>{目标}</div></div>
+        <div class="coop"><div class="c-num">04</div><div class="c-title">多产线部署</div><div class="c-detail">扩展到 {规模}<br>{平台化/年度合同}<br><strong>目标：</strong>{目标}</div></div>
+      </div>
+    </div>
+
+    <div class="card reveal">
+      <div class="card-label">风险与应对</div>
+      <div class="tbl-wrap"><table><thead><tr><th>风险</th><th style="width:50px;text-align:center">等级</th><th>应对</th></tr></thead><tbody></tbody></table></div>
+    </div>
+  </div>
+</section>
+
+<footer class="page-footer">
+  <div class="section-inner">
+    <strong>【公司名称】</strong><br>
+    报告日期 {YYYY-MM-DD} · 内部资料 · 基于公开信息 + 分析平台/声学AI检测方案能力评估<br>
+    AI声学，定义工业生产质量管理
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reveals=document.querySelectorAll('.reveal');
+  var observer=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible')});
+  },{threshold:0.12});
+  reveals.forEach(function(el){observer.observe(el)});
+
+  var links=document.querySelectorAll('.page-header nav a');
+  var sections=[].slice.call(links).map(function(a){return document.querySelector(a.getAttribute('href'))}).filter(Boolean);
+  var offsets=sections.map(function(s){return s.getBoundingClientRect().top+window.scrollY-80});
+  function onScroll(){var y=window.scrollY+120;var idx=-1;for(var i=0;i<offsets.length;i++){if(y>=offsets[i])idx=i}links.forEach(function(a,i){a.classList.toggle('active',i===idx)})}
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+  links.forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();var t=document.querySelector(this.getAttribute('href'));if(t){window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-60,behavior:'smooth'})}})});
+
+  document.querySelectorAll('.reveal').forEach(function(el){observer.observe(el)});
+})();
+</script>
+</body>
+</html>
